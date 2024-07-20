@@ -1,0 +1,10 @@
+PESNet_source/**
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.dvi
+*.synctex.gz
+*.fls
+*.fdb_latexmk
