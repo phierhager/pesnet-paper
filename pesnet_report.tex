@@ -17,11 +17,11 @@
 \maketitle
 
 \begin{abstract}
-    This report provides a critical review of the paper "PESNet: Ab-Initio Potential Energy Surfaces by Pairing GNNs with Neural Wave Functions" by Nicholas Gao and Stephan Günnemann. In the paper, the authors describe a novel approach combining Graph Neural Networks (GNNs) and neural wave functions to solve the Schrödinger equation for multiple molecular geometries simultaneously, significantly reducing computational costs. This review summarizes the main contributions, strengths, limitations, and potential future research directions based on the findings of the paper.
+    The report provides a critical review of the paper "PESNet: Ab-Initio Potential Energy Surfaces by Pairing GNNs with Neural Wave Functions" by Nicholas Gao and Stephan Günnemann. In it, the authors describe a new approach combining Graph Neural Networks (GNNs) and neural wave functions to solve the Schrödinger equation for multiple molecular geometries simultaneously, significantly reducing computational costs. This review summarizes the main contributions, strengths, limitations, and potential future research directions based on the findings of the paper.
 \end{abstract}
 
 \section{Introduction}
-The paper "PESNet: Ab-Initio Potential Energy Surfaces by Pairing GNNs with Neural Wave Functions" addresses the computational challenges in solving the Schrödinger equation for multiple molecular geometries using neural networks. Using neural wave functions as a represantion of the quantum wave function still requires separate self-supervised trainings with the Variational Monte Carlo (VMC) framework for each geometry, leading to high computational costs. Orthogonal research has been conducted to reformulate the eigenvalue problem of solving the Schrödinger equation as a supervised regression task. It models the system with graph neural networks (GNN) and takes features like position and charge of the nuclei and regresses on its energy. The labels come from classical simulation like Coupled Clusters (CC) and Density Function Theory(DFT). However, as graph neural networks became very performant in the task, the error of the simulated data to the real-world data is larger than the error of the neural network. The authors propose PESNet, which leverages GNNs to parameterize a neural wave function, allowing simultaneous resolution of the Schrödinger equation for multiple geometries. The significance of this approach lies in its ability to capture the potential energy surfaces (PES) more efficiently and accurately, which is crucial for understanding molecular interactions and reactions. It combines the strengths of GNNs and neural wave functions approach to model the quantum state of molecular systems. All images are taken from the paper itself.
+The paper "PESNet: Ab-Initio Potential Energy Surfaces by Pairing GNNs with Neural Wave Functions" addresses the computational challenges in solving the Schrödinger equation for multiple molecular geometries with neural networks. Using neural wave functions as a represantion of the quantum wave function still requires separate self-supervised trainings with the Variational Monte Carlo (VMC) framework for each geometry, leading to high computational costs. Orthogonal research has been conducted to reformulate the eigenvalue problem of solving the Schrödinger equation as a supervised regression task. It models the system with graph neural networks (GNN) and takes features like position and charge of the nuclei and regresses on its energy. The labels come from classical simulation like Coupled Clusters (CC) and Density Function Theory(DFT). However, as graph neural networks became very performant in the task, the error of the simulated data to the real-world data is larger than the error of the neural network. The authors propose PESNet, which leverages GNNs to parameterize a neural wave function, allowing simultaneous resolution of the Schrödinger equation for multiple geometries. The significance of this approach lies in its ability to capture the potential energy surfaces (PES) more efficiently and accurately, which is crucial for understanding molecular interactions and reactions. It combines the strengths of GNNs and neural wave functions approach to model the quantum state of molecular systems.
 
 \section{Method Summary}
 The proposed PESNet architecture integrates a MetaGNN with a wave function model (WFModel) to generate parameters for multiple molecular geometries. The MetaGNN processes the nuclei coordinates and charges, outputting parameters that adapt the WFModel for specific geometries. This method captures continuous subsets of the potential energy surface in a single training pass, enhancing efficiency. Key components of the approach include:
@@ -36,7 +36,7 @@ The combination of these components allows PESNet to efficiently and accurately 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{schematic_pesnet.png}
-    \caption{Schematic of PESNet. For every molecular structure, the MetaGNN processes the charges and distances and parametrizes the WFModel. Given these, the WFModel evaluates the electronic wave function.}
+    \caption{Schematic of PESNet. For every molecular structure, the MetaGNN processes the charges and distances and parametrizes the WFModel. Given these, the WFModel evaluates the electronic wave function. (Image taken from the paper)}
     \label{fig:schematic}
 \end{figure}
 
@@ -78,7 +78,7 @@ PESNet demonstrates several strengths, including:
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{table_gpu_times.png}
-    \caption{Total GPU (A100) hours to train all models of the respective figures. PESNet is up to 40 times faster than FermiNet and in all benchmarks faster than DeepErwin. It also more scalable as DeepErwin is not able to handle the largest molecules.}
+    \caption{Total GPU (A100) hours to train all models of the respective figures. PESNet is up to 40 times faster than FermiNet and in all benchmarks faster than DeepErwin. It also more scalable as DeepErwin is not able to handle the largest molecules. (Image taken from the paper)}
     \label{fig:gpu_times}
 \end{figure}
 
@@ -86,7 +86,7 @@ PESNet demonstrates several strengths, including:
     \centering
     \includegraphics[width=0.5\textwidth]{FermiNet_PesNet_comparison}
     \caption{Potential energy surface scan of the
-        nitrogen molecule. PESNet yields very similar energies than FermiNet. Without the MetaGNN the accuracy drops significantly.}
+        nitrogen molecule. PESNet yields very similar energies than FermiNet. Without the MetaGNN the accuracy drops significantly. (Image taken from the paper)}
     \label{fig:comparison}
 \end{figure}
 
@@ -110,12 +110,12 @@ There are several challenges of the paper that could be addressed in future work
 \end{itemize}
 
 \section{Conference Review Perspective}
-As ICLR reviewers of the paper confirmed by putting it into the ICLR Spotlight position, the paper is very innovative, combining two state-of-the-art orthogonal research fields to solve a very hard problem in quantum chemistry. The paper is well-written and clearly presents the methodology, results, and implications of the research. It also is clearly structured, so that even people without knowledge in chemistry can understand the subject. Furthermore, the figures helped a lot to get an insight into the model and the research. As an example, the figure \ref{fig:architecture} explains the whole model architecture graphically. The experimental evaluation is thorough, demonstrating the efficiency of the proposed PESNet model. Overall, the paper is a significant contribution to the field of computational quantum chemistry.
+As ICLR reviewers of the paper confirmed by putting it into the ICLR Spotlight position, the paper is very innovative, combining two state-of-the-art orthogonal research directions to solve a very hard problem in quantum chemistry. The paper is well-written and clearly presents the methodology, results, and implications of the research. It also is clearly structured, so that even people without knowledge in chemistry can understand the subject. Furthermore, the figures helped a lot to get an insight into the model and the research. As an example, the figure \ref{fig:architecture} explains the whole model architecture graphically. The experimental evaluation is thorough, demonstrating the efficiency of the proposed PESNet model. Overall, the paper is a significant contribution to the field of computational quantum chemistry.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\textwidth]{FermiNet_PesNet_comparison}
-    \caption{The PESNet architecture is split into two main components, the MetaGNN and the WFModel. The MetaGNN processes the molecular geometry information and generates parameters for the WFModel, which evaluates the electronic wave function.}
+    \includegraphics[width=0.5\textwidth]{architecture_.png}
+    \caption{The PESNet architecture is split into two main components, the MetaGNN and the WFModel. The MetaGNN processes the molecular geometry information and generates parameters for the WFModel, which evaluates the electronic wave function. (Image taken from the paper)}
     \label{fig:architecture}
 \end{figure}
 
