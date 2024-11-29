@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            /* Change to column to stack elements */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            /* Add some space below the headline */
+        }
+
+        iframe {
+            width: 95%;
+            height: 95%;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>PESNet Project Report</h1>
+    <iframe src="pesnet_report.pdf" type="application/pdf"></iframe>
+</body>
+
+</html>
